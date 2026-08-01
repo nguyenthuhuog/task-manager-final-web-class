@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= LOADING ================= -->
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            Task Manager
+        </div>
+
+        <nav class="header-right">
+
+            <span 
+                id="usernameDisplay"
+                class="username-display hidden">
+            </span>
+
+
+            <button
+                id="loginBtn"
+                class="hidden">
+
+                Login
+
+            </button>
+
+
+            <button
+                id="logoutBtn"
+                class="hidden">
+
+                Logout
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- LOGIN / REGISTER -->
+    <!-- ========================================================= -->
+
+    <section id="loginSection">
+
+        <div class="auth-container">
+
+            <div class="auth-card">
+
+                <h2>Login</h2>
+
+                <form id="loginForm">
+
+                    <label>
+
+                        Username
+
+                        <input
+                            type="text"
+                            name="username"
+                            required>
+
+                    </label>
+
+                    <label>
+
+                        Password
+
+                        <input
+                            type="password"
+                            name="password"
+                            required>
+
+                    </label>
+
+                    <button type="submit">
+
+                        Login
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <div class="auth-card">
+
+                <h2>Register</h2>
+
+                <form id="registerForm">
+
+                    <label>
+
+                        Username
+
+                        <input
+                            name="username"
+                            type="text"
+                            required>
+
+                    </label>
+
+                    <label>
+
+                        Password
+
+                        <input
+                            name="password"
+                            type="password"
+                            required>
+
+                    </label>
+
+                    <button type="submit">
+
+                        Register
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN APP -->
+    <!-- ========================================================= -->
+
+    <main
+        id="appSection"
+        class="container hidden">
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="dashboard">
+
+            <div class="dashboard-card">
+
+                <h3>Total</h3>
+
+                <span id="totalTask">0</span>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>Pending</h3>
+
+                <span id="pendingTask">0</span>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>Doing</h3>
+
+                <span id="doingTask">0</span>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>Done</h3>
+
+                <span id="doneTask">0</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <section class="toolbar">
+
+            <button id="addTaskBtn">
+
+                + Add Task
+
+            </button>
+
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search task...">
+
+
+            <select id="filterCategory">
+
+                <option value="all">All Category</option>
+
+                <option value="Study">Study</option>
+
+                <option value="Work">Work</option>
+
+                <option value="Personal">Personal</option>
+
+            </select>
+
+
+
+            <select id="filterStatus">
+
+                <option value="all">All Status</option>
+
+                <option value="Pending">Pending</option>
+
+                <option value="Doing">Doing</option>
+
+                <option value="Done">Done</option>
+
+            </select>
+
+            <select id="sortSelect">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="deadline">Deadline</option>
+                <option value="title">Title</option>
+            </select>
+        </section>
+
+
+
+        <!-- ================= TASK LIST ================= -->
+
+        <section id="taskContainer">
+
+        </section>
+
+
+
+        <!-- ================= EMPTY ================= -->
+
+        <section id="emptyState">
+
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/7486/7486740.png"
+                alt="Empty">
+
+            <h2>No Task Found</h2>
+
+            <p>Create your first task.</p>
+
+        </section>
+
+
+    </main>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- ADD / EDIT TASK -->
+    <!-- ========================================================= -->
+
+    <div
+        class="modal hidden"
+        id="taskModal">
+
+        <div class="modal-content">
+
+            <h2 id="modalTitle">
+
+                Add Task
+
+            </h2>
+
+            <form id="taskForm">
+
+                <input
+                    id="taskId"
+                    type="hidden"
+                    name="taskId">
+
+
+
+                <label>
+
+                    Title
+
+                    <input
+                        id="title"
+                        name="title"
+                        type="text">
+
+                    <small
+                        class="error"
+                        id="titleError"></small>
+
+                </label>
+
+
+
+                <label>
+
+                    Description
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"></textarea>
+
+                    <small
+                        class="error"
+                        id="descriptionError"></small>
+
+                </label>
+
+
+
+                <label>
+
+                    Category
+
+                    <select
+                        id="category"
+                        name="category">
+
+                        <option>Study</option>
+
+                        <option>Work</option>
+
+                        <option>Personal</option>
+
+                    </select>
+
+                </label>
+
+
+
+                <label>
+
+                    Status
+
+                    <select
+                        id="status"
+                        name="status">
+
+                        <option>Pending</option>
+
+                        <option>Doing</option>
+
+                        <option>Done</option>
+
+                    </select>
+
+                </label>
+
+
+
+                <label>
+
+                    Deadline
+
+                    <input
+                        id="deadline"
+                        name="deadline"
+                        type="date">
+
+                </label>
+
+
+
+                <div class="modal-buttons">
+
+                    <button
+                        id="saveBtn"
+                        type="submit">
+
+                        Save
+
+                    </button>
+
+                    <button
+                        id="cancelBtn"
+                        type="button">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- DETAIL -->
+    <!-- ========================================================= -->
+
+    <div
+        id="detailModal"
+        class="modal hidden">
+
+        <div class="modal-content">
+
+            <h2>Task Detail</h2>
+
+            <div id="detailContent">
+
+            </div>
+
+            <button id="closeDetail">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- DELETE -->
+    <!-- ========================================================= -->
+
+    <div
+        id="deleteModal"
+        class="modal hidden">
+
+        <div class="modal-content">
+
+            <h2>
+
+                Delete Task
+
+            </h2>
+
+            <p>
+
+                Are you sure?
+
+            </p>
+
+            <div class="modal-buttons">
+
+                <button id="confirmDelete">
+
+                    Delete
+
+                </button>
+
+                <button id="cancelDelete">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast hidden">
+
+    </div>
+
+
+
+
+    <!-- ================= JS ================= -->
+
+    <script src="./js/api.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/task.js"></script>
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>

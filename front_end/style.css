@@ -1,0 +1,1042 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#f5f7fb;
+
+    color:#333;
+
+    line-height:1.5;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+button,
+input,
+select,
+textarea{
+
+    font:inherit;
+
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+
+    --primary:#2563eb;
+
+    --primary-dark:#1d4ed8;
+
+    --success:#16a34a;
+
+    --warning:#f59e0b;
+
+    --danger:#dc2626;
+
+    --gray:#6b7280;
+
+    --light:#ffffff;
+
+    --background:#f5f7fb;
+
+    --border:#d1d5db;
+
+    --shadow:0 6px 20px rgba(0,0,0,.08);
+
+    --radius:12px;
+
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:30px 0;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:#fff;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 8%;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+}
+
+.header nav{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.header-right {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.username-display {
+
+    font-weight:600;
+
+    color:#333;
+
+    padding:8px 12px;
+
+    background:#f1f5f9;
+
+    border-radius:8px;
+
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:10px 18px;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+button:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+button:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    padding:10px 12px;
+
+    background:#fff;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:90px;
+
+}
+
+label{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+.error{
+
+    color:var(--danger);
+
+    font-size:13px;
+
+    min-height:16px;
+
+}
+
+
+/* =========================================================
+   LOGIN / REGISTER
+========================================================= */
+
+#loginSection{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:calc(100vh - 80px);
+
+    padding:40px;
+
+}
+
+.auth-container{
+
+    width:100%;
+
+    max-width:900px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.auth-card{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:35px;
+
+}
+
+.auth-card h2{
+
+    text-align:center;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+.auth-card button{
+
+    width:100%;
+
+    margin-top:8px;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+.dashboard-card{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    padding:24px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.dashboard-card h3{
+
+    font-size:16px;
+
+    color:var(--gray);
+
+    margin-bottom:12px;
+
+}
+
+.dashboard-card span{
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+
+    display:grid;
+
+    grid-template-columns:
+
+        170px
+
+        1fr
+
+        180px
+
+        180px;
+
+    gap:16px;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+#addTaskBtn{
+
+    height:45px;
+
+}
+
+#searchInput{
+
+    height:45px;
+
+}
+
+#filterCategory,
+#filterStatus{
+
+    height:45px;
+
+}
+
+/* =========================================================
+   TASK LIST
+========================================================= */
+
+#taskContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+
+    gap:24px;
+
+    margin-bottom:40px;
+
+}
+
+.task-card{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    transition:.25s;
+
+    border-left:6px solid var(--primary);
+
+}
+
+.task-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+
+}
+
+.task-card h3{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+}
+
+.task-description{
+
+    color:#555;
+
+    line-height:1.6;
+
+    min-height:55px;
+
+}
+
+.task-info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    font-size:14px;
+
+}
+
+.task-info div{
+
+    background:#f8fafc;
+
+    padding:8px;
+
+    border-radius:8px;
+
+}
+
+.task-status{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+}
+
+.status-Pending{
+
+    background:#f59e0b;
+
+}
+
+.status-Doing{
+
+    background:#3b82f6;
+
+}
+
+.status-Done{
+
+    background:#16a34a;
+
+}
+
+.task-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+.task-buttons button{
+
+    flex:1;
+
+}
+
+.detail-btn{
+
+    background:#0ea5e9;
+
+}
+
+.detail-btn:hover{
+
+    background:#0284c7;
+
+}
+
+.edit-btn{
+
+    background:#16a34a;
+
+}
+
+.edit-btn:hover{
+
+    background:#15803d;
+
+}
+
+.delete-btn{
+
+    background:#dc2626;
+
+}
+
+.delete-btn:hover{
+
+    background:#b91c1c;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+#emptyState{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:#666;
+
+}
+
+#emptyState img{
+
+    width:180px;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+}
+
+#emptyState h2{
+
+    color:#333;
+
+    margin-bottom:10px;
+
+}
+
+#emptyState p{
+
+    color:#777;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+    animation:fadeIn .25s;
+
+}
+
+.modal.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:95%;
+
+    max-width:550px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:28px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+.modal-content h2{
+
+    color:var(--primary);
+
+    margin-bottom:22px;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+#cancelBtn,
+#cancelDelete,
+#closeDetail{
+
+    background:#6b7280;
+
+}
+
+#cancelBtn:hover,
+#cancelDelete:hover,
+#closeDetail:hover{
+
+    background:#4b5563;
+
+}
+
+#confirmDelete{
+
+    background:#dc2626;
+
+}
+
+#confirmDelete:hover{
+
+    background:#b91c1c;
+
+}
+
+
+/* =========================================================
+   DETAIL CONTENT
+========================================================= */
+
+#detailContent{
+
+    line-height:1.8;
+
+    margin:20px 0;
+
+}
+
+#detailContent hr{
+
+    margin:15px 0;
+
+    border:none;
+
+    border-top:1px solid #ddd;
+
+}
+
+#detailContent strong{
+
+    color:var(--primary);
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(255,255,255,.85);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    z-index:2000;
+
+}
+
+.spinner{
+
+    width:60px;
+
+    height:60px;
+
+    border:6px solid #ddd;
+
+    border-top:6px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:14px 24px;
+
+    border-radius:10px;
+
+    box-shadow:var(--shadow);
+
+    z-index:3000;
+
+    animation:slideUp .35s;
+
+    min-width:220px;
+
+    text-align:center;
+
+}
+
+.toast.success{
+
+    background:#16a34a;
+
+}
+
+.toast.error{
+
+    background:#dc2626;
+
+}
+
+.toast.warning{
+
+    background:#f59e0b;
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        transform:translateY(40px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:992px){
+
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .toolbar{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header{
+
+        flex-direction:column;
+
+        gap:16px;
+
+    }
+
+    .auth-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .toolbar{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #taskContainer{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .task-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .modal-content{
+
+        width:95%;
+
+        padding:22px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .dashboard-card span{
+
+        font-size:28px;
+
+    }
+
+    button{
+
+        width:100%;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .toast{
+
+        left:20px;
+
+        right:20px;
+
+        bottom:20px;
+
+        min-width:auto;
+
+    }
+
+}
