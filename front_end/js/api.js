@@ -2,7 +2,7 @@
 // API Configuration
 // =====================================
 
-const API_BASE = "http://localhost:3000/api";
+const API_BASE = "https://task-manager-final-web-class-back-end.onrender.com/api";
 
 
 // =====================================
