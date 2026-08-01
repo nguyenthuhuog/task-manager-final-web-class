@@ -7,8 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "keywords": [],
-  "author": "",
+  "author": "HuongNguyen",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
